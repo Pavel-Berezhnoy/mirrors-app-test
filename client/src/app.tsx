@@ -1,7 +1,14 @@
 import "normalize.css";
+import { BrowserRouter } from "react-router-dom";
+import Router from './app/router'
+import './index.css'
 
 function App() {
-  return <h1>Hi dev!</h1>;
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  );
 }
 
 export default App;

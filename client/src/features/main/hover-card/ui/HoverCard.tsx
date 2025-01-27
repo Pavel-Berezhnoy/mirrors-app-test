@@ -23,34 +23,46 @@ export default function HoverCard({ card }: Props) {
 
   return (
     <Card onMouseOver={openAccordionHandle} onMouseLeave={closeAccordionHandle}>
-      <CardActionArea
-        sx={{ display: 'flex', flexDirection: 'column', height: '100%', alignItems: 'flex-start' }}
-        LinkComponent={Link}
-        target='_blank'
-        to={card.permalink}
-      >
-        <CardHeader title={card.user.username} subheader={formatRelativeDate(card.date)} />
-        <CardContent sx={{ flexGrow: '1' }}>
-          <Typography fontSize="1.4rem" lineHeight="1.8rem" variant="body1" sx={{ color: 'text.secondary' }}>
-            {card.caption}
-          </Typography>
-        </CardContent>
-        <Accordion expanded={openAccordion} sx={{ width: '100%' }}>
-          <AccordionSummary sx={{ display: 'none' }} disabled></AccordionSummary>
-          <AccordionDetails>
-            <CardActions>
-              <Box display="flex" gap="1.2rem" alignItems="center">
-                <FavoriteIcon />
-                <Typography fontSize="1.4rem" lineHeight="1.8rem" variant='body1'>{card.likes}</Typography>
-              </Box>
-              <Box display="flex" gap="1.2rem" alignItems="center">
-                <ModeCommentIcon />
-                <Typography fontSize="1.4rem" lineHeight="1.8rem" variant='body1'>{card.comments}</Typography>
-              </Box>
-            </CardActions>
-          </AccordionDetails>
-        </Accordion>
-      </CardActionArea>
+      <Link target='_blank' to={card.permalink}>
+        <CardActionArea
+          sx={{ display: 'flex', flexDirection: 'column', height: '100%', alignItems: 'flex-start' }}
+        >
+          <CardHeader
+            title={card.user.username}
+            subheader={formatRelativeDate(card.date)}
+            sx={{ color: 'text.primary' }}
+          />
+          <CardContent sx={{ flexGrow: '1' }}>
+            <Typography
+              fontSize="1.4rem" 
+              lineHeight="1.8rem"
+              variant="body1" 
+              sx={{ color: 'text.primary' }}
+            >
+              {card.caption}
+            </Typography>
+          </CardContent>
+          <Accordion expanded={openAccordion} sx={{ width: '100%' }}>
+            <AccordionSummary sx={{ display: 'none' }} disabled></AccordionSummary>
+            <AccordionDetails>
+              <CardActions>
+                <Box display="flex" gap="1.2rem" alignItems="center">
+                  <FavoriteIcon />
+                  <Typography fontSize="1.4rem" lineHeight="1.8rem" variant='body1'>
+                    {card.likes}
+                  </Typography>
+                </Box>
+                <Box display="flex" gap="1.2rem" alignItems="center">
+                  <ModeCommentIcon />
+                  <Typography fontSize="1.4rem" lineHeight="1.8rem" variant='body1'>
+                    {card.comments}
+                  </Typography>
+                </Box>
+              </CardActions>
+            </AccordionDetails>
+          </Accordion>
+        </CardActionArea>
+      </Link>
     </Card>
   )
 }
